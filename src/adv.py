@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -37,7 +38,22 @@ room['treasure'].s_to = room['narrow']
 # Main
 #
 
+
+
+# while True:
+#     direct = input("Go in which direction (n, s, e, w)?: ")
+#     break
+
+    # if direct == "n":
+
+
 # Make a new player object that is currently in the 'outside' room.
+while True:
+    player_name = input("What's your name?: ")
+    break
+
+player = Player(player_name, 'outside')
+print(player)
 
 # Write a loop that:
 #

@@ -40,11 +40,6 @@ room['treasure'].s_to = room['narrow']
 
 
 
-# while True:
-#     direct = input("Go in which direction (n, s, e, w)?: ")
-#     break
-
-    # if direct == "n":
 
 
 # Make a new player object that is currently in the 'outside' room.
@@ -52,8 +47,7 @@ while True:
     player_name = input("What's your name?: ")
     break
 
-player = Player(player_name, 'outside')
-print(player)
+player = Player(player_name, room['outside'])
 
 # Write a loop that:
 #
@@ -65,3 +59,42 @@ print(player)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+while True:
+    #print the current room name and decription
+    print(f"{player.name} is currently at location {player.current_room.name}. {player.current_room.description}")
+
+
+    cmd = input("Which direction will you go (n, s, e, w)?: ")
+ 
+    #check if room exists
+
+    #if exists, go into room
+    if cmd == "n":
+        if player.current_room.n_to != None:
+            player.current_room = player.current_room.n_to
+            # print(player.current_room.name)
+        else:
+            print("There is no room in that direction")
+    if cmd == "s":
+        if player.current_room.s_to != None:
+            player.current_room = player.current_room.s_to
+        else:
+            print("There is no room in that direction")
+    if cmd == "e":
+        if player.current_room.e_to != None:
+            player.current_room = player.current_room.e_to
+        else:
+            print("There is no room in that direction")
+    if cmd == "w":
+        if player.current_room.w_to != None:
+            player.current_room = player.current_room.w_to
+        else:
+            print("There is no room in that direction")
+    elif cmd == "q":
+        print("See you soon, adventurer!")
+        break
+    
+    #if it doesn't exist, throw err
+
+    #exit game if "q" is pressed

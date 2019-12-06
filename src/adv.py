@@ -79,14 +79,14 @@ player = Player(player_name, room['outside'])
 
 while True:
     #print the current room name and decription
-    print(f"{player.name} is currently at location: {player.current_room.name}. {player.current_room.description}\nItems in this room are:")
+    print(f"\n{player.name} is currently at location: {player.current_room.name}. \n{player.current_room.description}\n\nItems in this room are:")
     if len(player.current_room.items) > 0:
         for item in player.current_room.items:
             print(f'{item}')
     else:
         print("None")
 
-    cmd = input("Move: 'n', 's', 'e', 'w'\nAction: 'take', 'get', or 'drop <item name>\ninput 'q' to quit\nWhat do you want to do?: ").split(' ')
+    cmd = input(f"\nMove: 'n', 's', 'e', 'w'\nAction: 'take', 'get', or 'drop <item name>\nCheck inventory: 'i' or 'inventory' \nQuit: 'q'\n\nWhat do you want to do?: ").split(' ')
  
     #check if room exists
     #if exists, go into room
@@ -116,6 +116,13 @@ while True:
         player.add_item(cmd[1])
     elif cmd[0] == "drop":
         player.drop_item(cmd[1])
+    elif cmd[0] == "i" or cmd[0] == "inventory":
+        if len(player.items) > 0:
+            print("These are the items in your inventory: ")
+            for item in player.items:
+                print(item)
+        else:
+            print("You have no items in your inventory.\n")
     elif cmd[0] == "q":
         print("See you soon, adventurer!")
         break

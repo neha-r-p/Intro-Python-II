@@ -17,16 +17,16 @@ class Player:
             if thing == item:
                 self.items.append(item)
                 self.current_room.items.remove(item)
-                print(f"You now have {item} in your inventory.")
+                print(f"\nYou now have {item} in your inventory.\n")
                 # print(self.current_room.items)
                 # print("thing", thing)
                 # print("self items", self.items)
             else:
-                print(f"The room does not have {item}.")
+                print(f"\nThe room does not have {item}.\n")
     
     def drop_item(self, item):
         for thing in self.items:
             if thing == item:
                 self.items.remove(item)
                 self.current_room.items.append(item)
-                print(f"You have dropped {item} from your inventory.")
+                print(f"\nYou have dropped {item} from your inventory.\n")

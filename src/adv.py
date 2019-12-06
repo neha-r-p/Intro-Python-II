@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -19,7 +20,7 @@ to north. The smell of gold permeates the air."""),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
+earlier adventurers. The only exit is to the south. Before you go, have a nice picnic."""),
 }
 
 
@@ -33,6 +34,21 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+
+#Create Items
+
+item = {
+    'cheese': Item("cheese", "The cheese looks unspoiled and doesn't smell rotten"),
+    'olives': Item("olives", "Are the olives stuffed with garlic? These are next level"),
+    'bread': Item("bread", "A loaf of french break that's a little bit stale, but won't break teeth."),
+    'mushrooms': Item("mushrooms", "The mushrooms are growing out of the rock walls and glowing"),
+    'wine': Item("wine", "A bottle of pinot noir"),
+    'cloth': Item("cloth", "Red and white gingham cloth")
+}
+
+#Add items to rooms
+room['foyer'].items.append(item['wine'])
+print("foyer items", room['foyer'].items)
 
 #
 # Main

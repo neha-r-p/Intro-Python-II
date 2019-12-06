@@ -48,7 +48,12 @@ item = {
 
 #Add items to rooms
 room['foyer'].items.append(item['wine'])
-print("foyer items", room['foyer'].items)
+room['foyer'].items.append(item['bread'])
+room['overlook'].items.append(item['cheese'])
+room['overlook'].items.append(item['olives'])
+room['narrow'].items.append(item['mushrooms'])
+room['treasure'].items.append(item['cloth'])
+# print(room['overlook'].items)
 
 #
 # Main
@@ -74,36 +79,48 @@ player = Player(player_name, room['outside'])
 
 while True:
     #print the current room name and decription
-    print(f"{player.name} is currently at location: {player.current_room.name}. {player.current_room.description}")
+    print(f"{player.name} is currently at location: {player.current_room.name}. {player.current_room.description}\nItems in this room are:")
+    if len(player.current_room.items) > 0:
+        for item in player.current_room.items:
+            print(f'{item.name}')
+    else:
+        print("None")
 
-    cmd = input("Which direction will you go (n, s, e, w)?: ")
+    cmd = input("Move: 'n', 's', 'e', 'w'\nAction: 'take', 'get', or 'drop <item name>\ninput 'q' to quit\nWhat do you want to do?: ").split(' ')
  
     #check if room exists
     #if exists, go into room
-    if cmd == "n":
+    if cmd[0] == "n":
+        print(f'{cmd}')
         if player.current_room.n_to != None:
             player.current_room = player.current_room.n_to
             # print(player.current_room.name)
         else:
             print("There is no room in that direction.")
-    elif cmd == "s":
+    elif cmd[0] == "s":
         if player.current_room.s_to != None:
             player.current_room = player.current_room.s_to
         else:
             print("There is no room in that direction.")
-    elif cmd == "e":
+    elif cmd[0] == "e":
         if player.current_room.e_to != None:
             player.current_room = player.current_room.e_to
         else:
             print("There is no room in that direction.")
-    elif cmd == "w":
+    elif cmd[0] == "w":
         if player.current_room.w_to != None:
             player.current_room = player.current_room.w_to
         else:
             print("There is no room in that direction.")
-    elif cmd == "q":
+    elif cmd[0] == "take" or cmd[0] == "get":
+        print(f'{cmd}')
+    elif cmd[0] == "drop":
+        print(f'{cmd}')
+    elif cmd[0] == "q":
         print("See you soon, adventurer!")
         break
+    else:
+        print(f"Invalid command. \nInput a direction to move ('n', 's', 'e', 'w'), \nan action('get', 'take' or 'drop' <item name>, \nor input 'q' to quit.")
     
     #if it doesn't exist, throw err
 

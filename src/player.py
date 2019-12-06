@@ -17,7 +17,7 @@ class Player:
             if thing == item:
                 self.items.append(item)
                 self.current_room.items.remove(item)
-                print(f"\nYou now have {item} in your inventory.\n")
+                print(f"\nYou have picked up {item}\n")
                 # print(self.current_room.items)
                 # print("thing", thing)
                 # print("self items", self.items)
@@ -29,4 +29,4 @@ class Player:
             if thing == item:
                 self.items.remove(item)
                 self.current_room.items.append(item)
-                print(f"\nYou have dropped {item} from your inventory.\n")
+                print(f"\nYou have dropped {item}.\n")

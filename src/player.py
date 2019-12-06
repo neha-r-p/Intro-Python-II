@@ -13,7 +13,20 @@ class Player:
         return f'Player({repr(self.name)})'
     
     def add_item(self, item):
-        pass
+        for thing in self.current_room.items:
+            if thing == item:
+                self.items.append(item)
+                self.current_room.items.remove(item)
+                print(f"You now have {item} in your inventory.")
+                # print(self.current_room.items)
+                # print("thing", thing)
+                # print("self items", self.items)
+            else:
+                print(f"The room does not have {item}.")
     
-    def remove_item(self, item):
-        pass
+    def drop_item(self, item):
+        for thing in self.items:
+            if thing == item:
+                self.items.remove(item)
+                self.current_room.items.append(item)
+                print(f"You have dropped {item} from your inventory.")

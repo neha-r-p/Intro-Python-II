@@ -47,12 +47,12 @@ item = {
 }
 
 #Add items to rooms
-room['foyer'].items.append(item['wine'])
-room['foyer'].items.append(item['bread'])
-room['overlook'].items.append(item['cheese'])
-room['overlook'].items.append(item['olives'])
-room['narrow'].items.append(item['mushrooms'])
-room['treasure'].items.append(item['cloth'])
+room['foyer'].items.append(item['wine'].name)
+room['foyer'].items.append(item['bread'].name)
+room['overlook'].items.append(item['cheese'].name)
+room['overlook'].items.append(item['olives'].name)
+room['narrow'].items.append(item['mushrooms'].name)
+room['treasure'].items.append(item['cloth'].name)
 # print(room['overlook'].items)
 
 #
@@ -82,7 +82,7 @@ while True:
     print(f"{player.name} is currently at location: {player.current_room.name}. {player.current_room.description}\nItems in this room are:")
     if len(player.current_room.items) > 0:
         for item in player.current_room.items:
-            print(f'{item.name}')
+            print(f'{item}')
     else:
         print("None")
 
@@ -113,9 +113,9 @@ while True:
         else:
             print("There is no room in that direction.")
     elif cmd[0] == "take" or cmd[0] == "get":
-        print(f'{cmd}')
+        player.add_item(cmd[1])
     elif cmd[0] == "drop":
-        print(f'{cmd}')
+        player.drop_item(cmd[1])
     elif cmd[0] == "q":
         print("See you soon, adventurer!")
         break
